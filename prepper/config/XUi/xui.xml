@@ -1,0 +1,9 @@
+<modpreppers>
+	<!-- Preppers Mod --> 
+	<!-- Main scale of UI -->
+	
+	<set xpath="/xui/ruleset[@name='default']/@stackpanel_scale">1.00</set>
+	
+	<set xpath="/xui/ruleset[@name='default']/@scale">1.10</set>
+<!-- Preppers Mod --> 
+</modpreppers>

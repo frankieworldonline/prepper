@@ -1,0 +1,67 @@
+<modpreppers>
+<!-- Preppers Mod  --> 
+	
+	<!-- backpack size change -->
+	<set xpath="/buffs/buff[@name='god']/effect_group/passive_effect[@name='CarryCapacity']/@value">72</set>
+	<set xpath="/buffs/buff[@name='buffDrugSteroids']/effect_group/passive_effect[@name='CarryCapacity']/@value">72</set>
+	
+	
+	<append xpath="buffs">
+	
+	
+		<buff name="buffM84StunGrenade" icon="ui_game_symbol_stunned">
+		<damage_type value="knockdown"/>
+		<stack_type value="ignore"/>
+		<duration value="3"/>
+		<requirements compare_type="or">
+			<requirement name="NotHasBuff" buff="buffInjuryKnockdown1Cooldown"/>
+		</requirements>
+
+		<effect_group>
+			<passive_effect name="RunSpeed" operation="perc_set" value="0" />
+			<passive_effect name="WalkSpeed" operation="perc_set" value="0" />
+			<passive_effect name="CrouchSpeed" operation="perc_set" value="0" />
+			<passive_effect name="JumpStrength" operation="perc_set" value="0" />
+
+			<triggered_effect trigger="onSelfBuffStart" action="Ragdoll" target="self" duration="3"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" target="self" buff="buffM84StunGrenade1"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="buffM84StunGrenade1" name_key="buffInjuryStunned1Name" description_key="buffInjuryStunned1NameDesc" tooltip_key="buffInjuryStunned1NameDescTooltip" icon="ui_game_symbol_stunned">
+		<damage_type value="stun"/>
+		<stack_type value="ignore"/>
+		<duration value="4"/>
+
+		<requirements compare_type="or">
+			<requirement name="NotHasBuff" buff="buffDrugPainkillers"/>
+			<requirement name="NotHasBuff" buff="buffInjuryStunned2"/>
+			<requirement name="NotHasBuff" buff="buffInjuryStunned1Cooldown"/>
+		</requirements>
+
+		<effect_group>
+			<passive_effect name="RunSpeed" operation="perc_subtract" value="0.8, 0" duration="0,4" />
+			<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.8, 0" duration="0,4" />
+			<passive_effect name="CrouchSpeed" operation="perc_subtract" value="0.8, 0" duration="0,4" />
+			<passive_effect name="JumpStrength" operation="perc_subtract" value="0.8, 0" duration="0,4" />
+
+			<passive_effect name="AttacksPerMinute" operation="perc_set" value="0.5, 1" duration="0,4" />
+
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="2" fade="1" effect_name="Blur"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="1" effect_name="Blur"/>
+
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" target="self" sound="buff_stunned" play_in_head="true"/>
+			<triggered_effect trigger="onSelfEnteredGame" action="PlaySound" target="self" sound="buff_stunned" play_in_head="true"/>
+
+			<triggered_effect trigger="onSelfBuffRemove" action="FadeOutSound" target="self" sound="buff_stunned" play_in_head="true"/>
+			<triggered_effect trigger="onSelfLeaveGame" action="StopSound" target="self" sound="buff_stunned" play_in_head="true"/>
+
+			<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" target="self" buff="buffInjuryStunned1Cooldown"/>
+		</effect_group>
+	</buff>
+	
+	
+	
+		</append>
+	<!-- Preppers Mod  --> 
+</modpreppers>

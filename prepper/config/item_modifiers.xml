@@ -1,0 +1,353 @@
+<modpreppers>
+<!-- Preppers Mod --> 
+
+	<append xpath="/item_modifiers">
+	
+	<item_modifier name="X_25Drum" installable_tags="magazine,gunSCAR_L" blocked_tags="pistol,revolver,shortRange,perkDeadEye,perkExplosiveWeapons,perkArchery" modifier_tags="magazine" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="CustomIcon" value="icon_X_25Drum"/>
+		<!--Adds increased Ammunition-->
+		<effect_group tiered="false">
+			<passive_effect name="MagazineSize" operation="perc_add" value=".8"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+	
+	<item_modifier name="modGunSoundSuppressorSilencer" installable_tags="gun,gunSCAR_L" blocked_tags="revolver,flaredBarrel" modifier_tags="barrelAttachment" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<!--Decreases sound footprint by x% -->
+		<item_property_overrides name="*">
+			<property name="Sound_start" value="silenced_fire"/>
+			<property name="Sound_end" value=""/>
+		</item_property_overrides>
+
+		<item_property_overrides name="gunSCAR_L">
+			<property name="Sound_start" value="ak47_s_fire"/>
+			<property name="BarrelOffset" value="0,-0.02,0.2182"/>
+			<property name="BarrelScale" value="0.88,0.88,0.88"/>
+		</item_property_overrides>
+
+		<effect_group tiered="false">
+			<passive_effect name="EntityDamage" operation="perc_add" value="-.2">
+				<requirement name="RandomRoll" seed_type="Item" min_max="1,100" operation="LTE" value="80"/>
+			</passive_effect>
+			<passive_effect name="DamageFalloffRange" operation="perc_add" value="-.25">
+				<requirement name="RandomRoll" seed_type="Item" min_max="1,100" operation="LTE" value="80"/>
+			</passive_effect>
+			<passive_effect name="MaxRange" operation="perc_add" value="-.25">
+				<requirement name="RandomRoll" seed_type="Item" min_max="1,100" operation="LTE" value="80"/>
+			</passive_effect>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="AttachPrefabToHeldItem" prefab="Items/Mods/Barrels/SilencerPrefab" parent_transform="Attachments/Barrel"/>
+			<!-- stealth/noise stuff here -->
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunBarrelExtender" installable_tags="barrelAttachments,gunSCAR_L" modifier_tags="barrelAttachment" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<!--DamageFalloffRange increased by x meters-->
+		<effect_group tiered="false">
+			<passive_effect name="DamageFalloffRange" operation="perc_add" value=".2"/>
+			<passive_effect name="MaxRange" operation="perc_add" value=".2"/>
+
+			<passive_effect name="SpreadMultiplierHip" operation="perc_add" value=".25"/>
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.25"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.3"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+
+	<item_modifier name="modGunMuzzleBrake" installable_tags="barrelAttachments,gunSCAR_L" modifier_tags="barrelAttachment" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<!-- Muzzle brake: Directs some of the gases upwards to reduce recoil. Typically increases visibility of the gun/shooter as a result. -->
+		<effect_group tiered="false">
+			<passive_effect name="KickDegreesVertical" operation="perc_add" value="-0.12"/>
+			<passive_effect name="KickDegreesHorizontal" operation="perc_add" value="-0.1"/>
+		</effect_group>
+			<!-- <passive_effect name="DamageFalloffRange" operation="base_subtract" value="5"/> -->
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<!-- Muzzle weight / stabilizer / compensator: Any piece of... stuff attached near the muzzle in order to make that bit heavier and counteract recoil. -->
+
+	<item_modifier name="modGunFlashSuppressor" installable_tags="barrelAttachments,gunSCAR_L" modifier_tags="barrelAttachment,gunSCAR_L" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<!--Removes barrel flash effect-->
+
+		<item_property_overrides name="*">
+				<property name="Particles_muzzle_fire" value=""/>
+		</item_property_overrides>
+
+		<effect_group tiered="false">
+		</effect_group>
+			<!-- <passive_effect name="DamageFalloffRange" operation="base_subtract" value="5"/> -->
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunLaserSight" installable_tags="sideAttachments,gunSCAR_L" modifier_tags="sideAttachment" type="attachment">
+		<property name="Stacknumber" value="1"/>
+
+		<item_property_overrides name="*">
+			<property name="CrosshairOnAim" value="true"/>
+		</item_property_overrides>
+
+		<item_property_overrides name="gunSCAR_L">
+			<property name="SideOffset" value="0,0.003,0.1674"/>
+			<property name="SideScale" value="1,1,1"/>
+		</item_property_overrides>
+
+		<effect_group tiered="false">
+			<passive_effect name="SpreadMultiplierHip" operation="perc_add" value="-.25"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value=".2"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="AttachPrefabToHeldItem" prefab="Items/Mods/Sides/side_attachment_laserPrefab" parent_transform="Attachments/Side" local_rotation="0,0,0"/>
+			<triggered_effect trigger="onSelfItemActivate" action="SetTransformChildrenActive" active="true" parent_transform="Side" transform_path="gun_laser"/>
+			<triggered_effect trigger="onSelfItemDeactivate" action="SetTransformChildrenActive" active="false" parent_transform="Side" transform_path="gun_laser"/>
+		</effect_group>
+
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunFlashlight" installable_tags="sideAttachments,gunSCAR_L" modifier_tags="sideAttachment" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="LightValue" value="0.7"/>
+
+		<item_property_overrides name="gunSCAR_L">
+			<property name="SideOffset" value="0,-0.0025,0.175"/>
+			<property name="SideScale" value="1.12,1.12,1.12"/>
+		</item_property_overrides>
+
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="AttachPrefabToHeldItem" prefab="Items/Mods/Sides/side_attachment_flashlightPrefab" parent_transform="Attachments/Side"/>
+			<triggered_effect trigger="onSelfItemActivate" action="SetTransformActive" active="true" parent_transform="Side" transform_path="lightSource"/>
+			<triggered_effect trigger="onSelfItemDeactivate" action="SetTransformActive" active="false" parent_transform="Side" transform_path="lightSource"/>
+			<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" parent_transform="Side" transform_path="lightSource"/>
+		</effect_group>
+
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<!-- ACOG is a trademarked acronym. Do not use. -->
+
+	<item_modifier name="modGunScopeSmall" installable_tags="smallTopAttachments,gunSCAR_L" blocked_tags="shotgun" modifier_tags="scope" type="attachment">
+		<property name="Stacknumber" value="1"/>
+
+		<item_property_overrides name="*">
+			<property name="CrosshairOnAim" value="false"/>
+			<property name="Zoom_overlay" value="Items/Weapons/HUD/sniper_zoom_overlay"/>
+			<property name="Zoom_max_out" value="40"/>
+			<property name="Zoom_max_in" value="40"/>
+		</item_property_overrides>
+
+		<item_property_overrides name="gunSCAR_L">
+			<property name="ScopeOffset" value="0,0.0736,-0.1497"/>
+			<property name="ScopeScale" value="0.9,0.9,0.9"/>
+			<property name="ScopeCameraOffset" value="0,0,0"/>
+		</item_property_overrides>
+
+		<effect_group tiered="false">
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_subtract" value="0.2"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="AttachPrefabToHeldItem" prefab="Items/Mods/Scopes/scope_2xPrefab" parent_transform="Attachments/Scope"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunScopeMedium" installable_tags="mediumTopAttachments,gunSCAR_L" blocked_tags="shotgun" modifier_tags="scope" type="attachment">
+		<property name="Stacknumber" value="1"/>
+
+		<item_property_overrides name="*">
+			<property name="CrosshairOnAim" value="false"/>
+			<property name="Zoom_overlay" value="Items/Weapons/HUD/sniper_zoom_overlay"/>
+			<property name="Zoom_max_out" value="30"/>
+			<property name="Zoom_max_in" value="20"/>
+		</item_property_overrides>
+
+		<item_property_overrides name="gunSCAR_L">
+			<property name="ScopeOffset" value="-0.0018,0.07,-.10"/>
+			<property name="ScopeScale" value="1.6,1.6,1.6"/>
+			<property name="ScopeCameraOffset" value="0,0,0"/>
+		</item_property_overrides>
+
+		<effect_group tiered="false">
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_subtract" value="0.35"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="AttachPrefabToHeldItem" prefab="Items/Mods/Scopes/scope_4xPrefab" parent_transform="Attachments/Scope"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunScopeLarge" installable_tags="largeTopAttachments" blocked_tags="shotgun,gunSCAR_L" modifier_tags="scope" type="attachment">
+		<property name="Stacknumber" value="1"/>
+
+		<item_property_overrides name="*">
+			<property name="CrosshairOnAim" value="false"/>
+			<property name="Zoom_overlay" value="Items/Weapons/HUD/sniper_zoom_overlay"/>
+			<property name="Zoom_max_out" value="20"/>
+			<property name="Zoom_max_in" value="10"/>
+		</item_property_overrides>
+
+		<item_property_overrides name="gunSCAR_L">
+			<property name="ScopeOffset" value="0,0,0"/>
+			<property name="ScopeScale" value="1,1,1"/>
+			<property name="ScopeCameraOffset" value="0,0,0"/>
+		</item_property_overrides>
+
+		<!--Add scope overlay, increase zoom x amount-->
+		<effect_group tiered="false">
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_subtract" value="0.6"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="AttachPrefabToHeldItem" prefab="Items/Mods/Scopes/scope_8xPrefab" parent_transform="Attachments/Scope"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunReflexSight" installable_tags="smallTopAttachments,gunSCAR_L" blocked_tags="bow" modifier_tags="scope" type="attachment">
+		<property name="Stacknumber" value="1"/>
+
+		<item_property_overrides name="*">
+			<property name="CrosshairOnAim" value="false"/>
+			<property name="Zoom_max_out" value="55"/>
+			<property name="Zoom_max_in" value="55"/>
+		</item_property_overrides>
+
+		<item_property_overrides name="gunSCAR_L">
+			<property name="ScopeOffset" value="0,0.073,-0.13"/>
+			<property name="ScopeScale" value="0.7,0.7,0.7"/>
+			<property name="ScopeCameraOffset" value="0,-.0147,0.12"/>
+		</item_property_overrides>
+
+		<effect_group tiered="false">
+			<passive_effect name="WeaponHandling" operation="perc_add" value="0.3"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="AttachPrefabToHeldItem" prefab="Items/Mods/Scopes/scope_laser_reflexPrefab" parent_transform="Attachments/Scope"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunTriggerGroupSemi" installable_tags="firingMode,gunSCAR_L" modifier_tags="trigger" type="attachment">
+		<property name="Stacknumber" value="1"/>
+
+		<effect_group tiered="false">
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunTriggerGroupBurst" installable_tags="firingMode,gunSCAR_L" modifier_tags="trigger" type="attachment">
+		<property name="Stacknumber" value="1"/>
+
+		<effect_group tiered="false">
+			<passive_effect name="BurstRoundCount" operation="base_set" value="3"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunRodAndSpring" installable_tags="selfLoading,gunSCAR_L" modifier_tags="fireRate" type="attachment">
+		<property name="Stacknumber" value="1"/>
+
+		<effect_group tiered="false">
+			<passive_effect name="RoundsPerMinute" operation="perc_add" value=".3"/>
+			<!--<passive_effect name="DegradationPerUse" operation="perc_subtract" value=".2"/>-->
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunBipod" installable_tags="bottomAttachments,gunSCAR_L" blocked_tags="shortRange" modifier_tags="accuracy" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<effect_group tiered="false">
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.25"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.15"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunForegrip" installable_tags="bottomAttachments,gunSCAR_L" modifier_tags="grips" type="attachment">
+		<property name="Stacknumber" value="1"/>
+
+		<effect_group tiered="false">
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.08"/>
+			<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value="-.2"/>
+			<passive_effect name="SpreadMultiplierHip" operation="perc_add" value="-.2"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value="-.2"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value=".15"/>
+			<passive_effect name="KickDegreesVertical" operation="perc_subtract" value="0.5"/>
+			<passive_effect name="KickDegreesHorizontal" operation="perc_subtract" value="0.5"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunRetractingStock" installable_tags="stock,gunSCAR_L" modifier_tags="stocks" type="attachment">
+		<property name="Stacknumber" value="1"/>
+
+		<effect_group tiered="false">
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunButtkick3000" installable_tags="weapon,gunSCAR_L" type="attachment" rarity="1">
+		<property name="CreativeMode" value="None"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="CustomIcon" value="gothBootsBlack"/>
+		<property name="CustomIconTint" value="255,0,255"/>
+		<effect_group tiered="false">
+			<passive_effect name="DamageFalloffRange" operation="perc_add" value=".25"/>
+			<passive_effect name="MaxRange" operation="perc_add" value=".25"/>
+			<passive_effect name="SpreadMultiplierHip" operation="perc_add" value="-.25"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value=".3"/>
+			<passive_effect name="RoundsPerMinute" operation="perc_add" value=".5"/>
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.3"/>
+			<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value=".4"/>
+			<passive_effect name="SpreadMultiplierHip" operation="perc_add" value=".4"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value=".4"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+	
+	<item_modifier name="modGunButtkick4000" installable_tags="weapon,gunSCAR_L" type="attachment" rarity="1">
+		<property name="CreativeMode" value="None"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="CustomIcon" value="gothBootsBlack"/>
+		<property name="CustomIconTint" value="0,0,255"/>
+		<effect_group tiered="false">
+			<passive_effect name="AttributeLevel" operation="base_set" value="10"/>
+			<passive_effect name="SkillLevel" operation="base_set" value="1"/>
+			<passive_effect name="PerkLevel" operation="base_set" value="5"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunMeleeFeelTheHeat" installable_tags="weapon,gunSCAR_L" modifier_tags="damage" type="attachment" rarity="0.5">
+		<property name="Stacknumber" value="1"/>
+
+		<!--Each successive shot within 2 seconds does an extra .1 damage-->
+		<effect_group tiered="false">
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="modGunCrippleEm" installable_tags="ranged,gunSCAR_L" modifier_tags="crippling" type="attachment" rarity="0.5">
+		<property name="Stacknumber" value="1"/>
+		<!--Each shot has a chance to cripple-->
+		<effect_group tiered="false">
+			<requirement name="EntityTagCompare" target="other" tags="walker"/>
+			<requirement name="HoldingItemHasTags" tags="shotgun" invert="true"/>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="20"/>
+				<triggered_effect trigger="onSelfDamagedOther" action="AddBuff" target="other" buff="buffInjuryCrippled1"/>
+		</effect_group>
+		<effect_group tiered="false">
+			<requirement name="EntityTagCompare" target="other" tags="walker"/>
+			<requirement name="HoldingItemHasTags" tags="shotgun"/>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,800" operation="LTE" value="20"/>
+				<triggered_effect trigger="onSelfDamagedOther" action="AddBuff" target="other" buff="buffInjuryCrippled1"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	
+	</append>
+
+	
+	
+
+	
+
+
+<!-- Preppers Mod --> 
+</modpreppers>

@@ -1,0 +1,60 @@
+<modpreppers>
+<!-- Preppers Mod --> 
+	<append xpath="/progression">
+	<perk name="perkYeahScience" parent="skillCraftsmanship" name_key="perkYeahScienceName" desc_key="perkYeahScienceDesc" icon="ui_game_symbol_chemistry">
+		<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="6" desc_key="reqIntellectLevel06"/></level_requirements>
+		<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="7" desc_key="reqIntellectLevel07"/></level_requirements>
+		<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="8" desc_key="reqIntellectLevel08"/></level_requirements>
+		<level_requirements level="4"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="9" desc_key="reqIntellectLevel09"/></level_requirements>
+		<level_requirements level="5"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="10" desc_key="reqIntellectLevel10"/></level_requirements>
+
+		<effect_group>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" value="1" level="1,5"
+				tags="ammoGasCan,drinkJarGrainAlcohol,resourceBulletCasing,resourceBulletTip,resourceBulletCasingSteel,ammo9mmBullet,ammo44MagnumBullet,ammoShotgunShell,ammo762mmBulletFMJ,ammo556mmBulletFMJ,chemistryStation,thrownAmmoPipeBomb,tnt,mineHubcap,mineCookingPot"/>
+			<!-- Tier 1 Weapon mods -->
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" value="1" level="1,5"
+				tags="modGunMuzzleBrake,modGunFlashlight,modGunScopeSmall,modGunTriggerGroupSemi,modGunBipod,modGunForegrip,modGunDuckbill,modGunChoke,modGunMagazineExtender,modShotgunSawedOffBarrel,modGunMeleeTheHunter,modMeleeSerratedBlade,modMeleeWeightedHead,modMeleeStructuralBrace,modMeleeGraveDigger,modMeleeWoodSplitter"/>
+			<!-- Tier 1 Armor mods -->
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" value="1" level="1,5"
+				tags="modArmorCoolingMesh,modArmorInsulatedLiner,modArmorReinforcedPadding,modArmorScrapPlating,modArmorImprovedFittings,modArmorStoragePocket,modArmorHelmetLight"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" value="1" level="2,5"
+				tags="thrownDynamite,ammo9mmBulletSteel,ammo44MagnumBulletSteel,ammo762mmBulletFMJSteel,ammoShotgunSlug,ammoArrowSteelAP,ammoCrossbowBoltSteelAP,ammoArrowFlaming,mineAirFilter,rScrapIronPlateMine,resourceMilitaryFiber,modMeleeBunkerBuster"/>
+			<!-- Tier 2 Weapon mods -->
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" value="1" level="2,5"
+				tags="modMeleeClubBurningShaft,modGunSoundSuppressorSilencer,modGunBarrelExtender,modGunLaserSight,modGunScopeMedium,modGunReflexSight,modGunTriggerGroupBurst,modGunRetractingStock,modGunCrippleEm,modMeleeTemperedBlade,modMeleeFortifyingGrip,modMeleeClubBarbedWire,modGunBowArrowRest"/>
+			<!-- Tier 2 Armor mods -->
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" value="1" level="2,5"
+				tags="modArmorPlasticPlating,modArmorIronPlating,modArmorSpikedKnuckles,modArmorCustomizedFittings,modArmorDoubleStoragePocket,modArmorMuffledConnectors,modArmorImpactBracing,modArmorWaterPurifier"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" value="1" level="3,5"
+				tags="ammoCrossbowBoltExploding"/>
+			<!-- Tier 3 Weapon mods -->
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" value="1" level="3,5"
+				tags="modGunScopeLarge,modGunTriggerGroupAutomatic,modGunRodAndSpring,modGunBowPolymerString,modMeleeErgonomicGrip,modMeleeClubMetalSpikes,modMeleeIronBreaker,modArmorBandolier,modGunMeleeRadRemover"/>
+			<!-- Tier 3 Armor mods -->
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" value="1" level="3,5"
+				tags="modArmorMilitaryPlating,modArmorSteelPlating,modArmorTripleStoragePocket,modArmorAdvancedMuffledConnectors"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" value="1" level="4,5"
+				tags="resourceRocketTip,resourceRocketCasing,ammoRocketHE,ammoRocketFrag"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" value="1" level="5"
+				tags="batterybank"/>
+			<effect_description level="1" desc_key="perkYeahScienceRank1Desc"/>
+			<effect_description level="2" desc_key="perkYeahScienceRank2Desc"/>
+			<effect_description level="3" desc_key="perkYeahScienceRank3Desc"/>
+			<effect_description level="4" desc_key="perkYeahScienceRank4Desc"/>
+			<effect_description level="5" desc_key="perkYeahScienceRank5Desc"/>
+		</effect_group>
+	</perk>
+	</append>
+	
+	<!-- Pack storeage --> 
+	
+	<set xpath="progression/perks/perk[@name='perkPackMule']/effect_group/passive_effect[@name='CarryCapacity' and @value='4']/@value">10</set>
+	<set xpath="progression/perks/perk[@name='perkPackMule']/effect_group/passive_effect[@name='CarryCapacity' and @value='9']/@value">20</set>
+	<set xpath="progression/perks/perk[@name='perkPackMule']/effect_group/passive_effect[@name='CarryCapacity' and @value='15']/@value">30</set>
+	<set xpath="progression/perks/perk[@name='perkPackMule']/effect_group/passive_effect[@name='CarryCapacity' and @value='21']/@value">40</set>
+	<set xpath="progression/perks/perk[@name='perkPackMule']/effect_group/passive_effect[@name='CarryCapacity' and @value='27']/@value">50</set>
+	
+
+
+<!-- Preppers Mod --> 
+</modpreppers>

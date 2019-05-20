@@ -1,0 +1,131 @@
+<modpreppers>
+	<!-- Preppers Mod  --> 
+	
+	<append xpath="/blocks">
+
+<!-- prepper class bags -->
+
+	<block name="SmackToOpenBag">
+		<property name="CustomIcon" value="cntBackpack03" />
+	   <property name="Material" value="Mcloth"/>
+		<property name="LightOpacity" value="0"/>
+		<property name="StabilitySupport" value="false"/> <!-- build restriction -->
+		<property name="Shape" value="Ext3dModel"/> <property name="Texture" value="293"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="Entities/LootContainers/backpack01Prefab" />
+		<property name="IsTerrainDecoration" value="true"/>
+		<property name="DowngradeBlock" value="PreppersBugOutBag" />
+		<property name="Place" value="TowardsPlacer" />
+		<drop event="Destroy" count="0" />
+	</block>
+	<block name="PreppersBugOutBag">
+		<property name="Extends" value="SmackToOpenBag" param1="DowngradeBlock" />
+		<property name="Class" value="Loot" />
+		<property name="LootList" value="200" />
+		<drop event="Destroy" count="0" />
+	</block> 
+	
+	<block name="WalmartPrepperBag">
+		<property name="CustomIcon" value="cntBackpack03" />
+	   <property name="Material" value="Mcloth"/>
+		<property name="LightOpacity" value="0"/>
+		<property name="StabilitySupport" value="false"/> <!-- build restriction -->
+		<property name="Shape" value="Ext3dModel"/> <property name="Texture" value="293"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="Entities/LootContainers/backpack01Prefab" />
+		<property name="IsTerrainDecoration" value="true"/>
+		<property name="DowngradeBlock" value="WalmartPrepperBOB" />
+		<property name="Place" value="TowardsPlacer" />
+		<drop event="Destroy" count="0" />
+	</block>
+	<block name="WalmartPrepperBOB">
+		<property name="Extends" value="WalmartPrepperBag" param1="DowngradeBlock" />
+		<property name="Class" value="Loot" />
+		<property name="LootList" value="200" />
+		<drop event="Destroy" count="0" />
+	</block> 
+	
+	<block name="GunEnthusiastPrepperBag">
+		<property name="CustomIcon" value="cntBackpack03" />
+	   <property name="Material" value="Mcloth"/>
+		<property name="LightOpacity" value="0"/>
+		<property name="StabilitySupport" value="false"/> <!-- build restriction -->
+		<property name="Shape" value="Ext3dModel"/> <property name="Texture" value="293"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="Entities/LootContainers/backpack01Prefab" />
+		<property name="IsTerrainDecoration" value="true"/>
+		<property name="DowngradeBlock" value="GunEnthusiastPrepperBOB" />
+		<property name="Place" value="TowardsPlacer" />
+		<drop event="Destroy" count="0" />
+	</block>
+	<block name="GunEnthusiastPrepperBOB">
+		<property name="Extends" value="GunEnthusiastPrepperBag" param1="DowngradeBlock" />
+		<property name="Class" value="Loot" />
+		<property name="LootList" value="201" />
+		<drop event="Destroy" count="0" />
+	</block> 
+	
+	<block name="EconomistPrepperBag">
+		<property name="CustomIcon" value="cntBackpack03" />
+	   <property name="Material" value="Mcloth"/>
+		<property name="LightOpacity" value="0"/>
+		<property name="StabilitySupport" value="false"/> <!-- build restriction -->
+		<property name="Shape" value="Ext3dModel"/> <property name="Texture" value="293"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="Entities/LootContainers/backpack01Prefab" />
+		<property name="IsTerrainDecoration" value="true"/>
+		<property name="DowngradeBlock" value="EconomistPrepperBOB" />
+		<property name="Place" value="TowardsPlacer" />
+		<drop event="Destroy" count="0" />
+	</block>
+	<block name="EconomistPrepperBOB">
+		<property name="Extends" value="EconomistPrepperBag" param1="DowngradeBlock" />
+		<property name="Class" value="Loot" />
+		<property name="LootList" value="202" />
+		<drop event="Destroy" count="0" />
+	</block> 
+	
+	<block name="survivalistPrepperBag">
+		<property name="CustomIcon" value="cntBackpack03" />
+	   <property name="Material" value="Mcloth"/>
+		<property name="LightOpacity" value="0"/>
+		<property name="StabilitySupport" value="false"/> <!-- build restriction -->
+		<property name="Shape" value="Ext3dModel"/> <property name="Texture" value="293"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="Entities/LootContainers/backpack01Prefab" />
+		<property name="IsTerrainDecoration" value="true"/>
+		<property name="DowngradeBlock" value="survivalistPrepperBOB" />
+		<property name="Place" value="TowardsPlacer" />
+		<drop event="Destroy" count="0" />
+	</block>
+	<block name="survivalistPrepperBOB">
+		<property name="Extends" value="survivalistPrepperBag" param1="DowngradeBlock" />
+		<property name="Class" value="Loot" />
+		<property name="LootList" value="203" />
+		<drop event="Destroy" count="0" />
+	</block> 
+	
+	<block name="UrbanPrepperBag">
+		<property name="CustomIcon" value="cntBackpack03" />
+	   <property name="Material" value="Mcloth"/>
+		<property name="LightOpacity" value="0"/>
+		<property name="StabilitySupport" value="false"/> <!-- build restriction -->
+		<property name="Shape" value="Ext3dModel"/> <property name="Texture" value="293"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="Entities/LootContainers/backpack01Prefab" />
+		<property name="IsTerrainDecoration" value="true"/>
+		<property name="DowngradeBlock" value="UrbanPrepperBOB" />
+		<property name="Place" value="TowardsPlacer" />
+		<drop event="Destroy" count="0" />
+	</block>
+	<block name="UrbanPrepperBOB">
+		<property name="Extends" value="UrbanPrepperBag" param1="DowngradeBlock" />
+		<property name="Class" value="Loot" />
+		<property name="LootList" value="204" />
+		<drop event="Destroy" count="0" />
+	</block> 
+	
+
+	</append>
+<!-- Preppers Mod --> 
+</modpreppers>

@@ -1,0 +1,153 @@
+<modpreppers>
+	<!-- Preppers Mod --> 
+	
+	<!-- dead bag, must = to pack and toolbelt-->
+	<set xpath="/lootcontainers/lootcontainer[@id='2']/@size">8,10</set>
+
+	<!-- Prepper loot -->
+
+	<insertAfter xpath="/lootcontainers/lootgroup[@name='BuriedStashChest']">
+		<lootgroup name="PrepperClothes" count="all">
+		<item group="pantsAll"/>
+		<item group="tshirtAll"/>
+		<item group="lightArmor" prob="0.1"/>
+		<item group="bandanaAll" prob="0.5"/>
+		</lootgroup>
+	</insertAfter>
+
+	<insertAfter xpath="/lootcontainers/lootgroup[@name='PrepperClothes']">
+	<lootgroup name="WalmartLoot" count="all">  
+		<item group="PrepperClothes" />	
+		<item name="bedroll" count="1"/>		
+		<item name="drinkJarBoiledWater" count="1,4"/>
+		<item name="casinoCoin" count="1,200"/>
+		<item group="airdropfood" count="1,3"/>
+		<item name="resourceDuctTape" count="2"/>
+		<item name="resourceNail" count="12"/>
+		<item name="nightvisionGoggles" count="1"/>
+		<item name="medicalBandage" count="2"/>
+		<item name="meleeToolHuntingKnife" count="1" quality="1,1"/>
+	</lootgroup>
+	
+	<lootgroup name="GunEnthusiastLoot" count="all"> 
+		<item group="PrepperClothes"/>
+		<item name="bedroll" count="1"/>
+		<item group="airdropfood" count="1,3"/>
+		<item name="casinoCoin" count="1,200"/>
+		<item name="gunPistol" count="1" quality="1,2"/>
+		<item name="gunHuntingRifle" count="1" quality="1,1"/>
+		<item name="ammo9mmBullet" count="50,100"/>
+		<item name="ammo762mmBulletFMJ" count="10,20"/>
+		<item name="shades" count="1"/>
+		<item name="resourceRepairKit" count="2"/>
+		<item name="drinkCanRiverWater" count="2"/>
+		<item name="medicalBandage" count="2"/>
+	</lootgroup>
+	
+		<lootgroup name="UrbanLoot" count="all"> 
+		<item group="PrepperClothes"/>
+		<item group="airdropfood" count="1,3"/>
+		<item name="bedroll" count="1"/>
+		<item name="casinoCoin" count="100,200"/>
+		<item name="meleeToolHuntingKnife" count="1" quality="1,1"/>
+		<item name="drinkCanRiverWater" count="2"/>
+		<item name="medicalBandage" count="2"/>
+		<item name="vehicleBicyclePlaceable" count="1" quality="1,1"/>
+	</lootgroup>
+	
+	<lootgroup name="EconomistLoot" count="all"> 
+		<item group="PrepperClothes"/>
+		<item group="airdropfood" count="1,3"/>
+		<item name="bedroll" count="1"/>
+		<item name="casinoCoin" count="800,4500"/>
+		<item name="resourceGoldNugget" count="3,10"/>
+		<item name="meleeToolHuntingKnife" count="1" quality="1,1"/>
+		<item name="drinkCanRiverWater" count="2"/>
+		<item name="medicalBandage" count="2"/>
+		
+	</lootgroup>
+	
+	<lootgroup name="survivalistLoot" count="all"> 
+		<item group="PrepperClothes" />
+		<item group="airdropfood" count="3,6"/>
+		<item name="gunHuntingRifle" count="1" quality="1,2"/>
+		<item name="ammo762mmBulletFMJ" count="20,80"/>
+		<item name="bedroll" count="1"/>
+		<item name="casinoCoin" count="1,200"/>		
+		<item name="shades" count="1" />
+		<item name="meleeToolHuntingKnife" count="1" quality="1,1"/>
+		<item name="resourceRepairKit" count="3"/>
+		<item name="drinkCanRiverWater" count="2"/>
+		<item name="medicalBandage" count="2"/>
+	</lootgroup>
+	
+	</insertAfter>
+
+	<insertAfter xpath="/lootcontainers/lootgroup[@name='weaponsHuntingRifle+ammo']">
+
+	<lootgroup name="gunSCAR_L+ammo" count="all">
+		<item name="gunSCAR_L" prob="0.04"/>
+		<item name="ammo556mmBulletFMJ" count="10,20"/>
+	</lootgroup>
+
+	<lootgroup name="X_25Drum" count="1">
+		<item name="X_25Drum"/>
+	</lootgroup>
+
+	<lootgroup name="X_25Drumschematic" count="1">
+		<item name="X_25Drumschematic"/>
+	</lootgroup>
+	</insertAfter>
+
+	<insertAfter xpath="/lootcontainers/lootcontainer[@id='110']" >
+	
+	<lootcontainer id="200" count="1" size="6,4" destroy_on_close="true" sound_open="UseActions/open_backpack" sound_close="UseActions/close_backpack" open_time="1.5">
+		<item group="WalmartLoot"/>
+	</lootcontainer>
+	<lootcontainer id="201" count="1" size="6,4" destroy_on_close="true" sound_open="UseActions/open_backpack" sound_close="UseActions/close_backpack" open_time="1.5">
+		<item group="GunEnthusiastLoot"/>
+	</lootcontainer>
+	<lootcontainer id="202" count="1" size="6,4" destroy_on_close="true" sound_open="UseActions/open_backpack" sound_close="UseActions/close_backpack" open_time="1.5">
+		<item group="EconomistLoot"/>
+	</lootcontainer>
+	<lootcontainer id="203" count="1" size="6,4" destroy_on_close="true" sound_open="UseActions/open_backpack" sound_close="UseActions/close_backpack" open_time="1.5">
+		<item group="survivalistLoot"/>
+	</lootcontainer>
+	<lootcontainer id="204" count="1" size="6,4" destroy_on_close="true" sound_open="UseActions/open_backpack" sound_close="UseActions/close_backpack" open_time="1.5">
+		<item group="UrbanLoot"/>
+	</lootcontainer>
+	
+	</insertAfter>
+
+	<append xpath="/lootcontainers/lootgroup[@name='ammo']">
+		<item name="ammo556mmBulletFMJ" count="1,20"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='ammoSteel']">
+		<item name="ammo556mmBulletFMJSteel" count="1,20"/>
+	</append>
+	
+	<append xpath="/lootcontainers/lootgroup[@name='modGunT1']">
+		<item name="X_25Drum"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='commonBooks']">
+		<item name="X_25Drumschematic"/>
+		<item name="gunSCAR_L_schematic"/>
+	</append>
+	
+	<append xpath="/lootcontainers/lootgroup[@name='weaponsMilitaryGuns+ammo']">
+		<item group="gunSCAR_L+ammo" prob="0.07"/>
+	</append>
+	
+	<append xpath="/lootcontainers/lootgroup[@name='militaryAmmo']">
+		<item name="ammo556mmBulletFMJ" count="5,30"/>
+	</append>
+	
+	<append xpath="/lootcontainers/lootgroup[@name='treasureAmmo']">
+		<item name="ammo556mmBulletFMJ" count="50,150"/>
+	</append>
+
+
+<!-- Preppers Mod --> 
+</modpreppers>

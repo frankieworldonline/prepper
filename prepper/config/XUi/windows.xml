@@ -1,0 +1,21 @@
+<modpreppers>
+	<!-- Preppers Mod --> 
+	
+
+
+	<!-- New pack size -->
+
+	<set xpath="/windows/window[@name='windowBackpack']/@height">416</set>
+	<set xpath="/windows/window[@name='windowBackpack']/@width">807</set>
+	<set xpath="/windows/window[@name='windowBackpack']/panel[@name='header']/sprite[@name='costIcon']/@color">[red]</set>
+	<set xpath="/windows/window[@name='windowBackpack']/panel[@name='header']/label[@text='{currencyamount}']/@color">[red]</set>
+	<set xpath="/windows/window[@name='windowBackpack']/panel[@name='header']/label[@name='windowName']/@text_key">BUG-OUT BAG</set>
+	<set xpath="/windows/window[@name='windowBackpack']/panel[@name='content']/@height">370</set>
+	<set xpath="/windows/window[@name='windowBackpack']/panel[@name='content']/sprite[@name='backgroundMain']/@width">807</set>
+	<set xpath="/windows/window[@name='windowBackpack']/panel[@name='content']/sprite[@name='backgroundMain']/@height">403</set>
+	<set xpath="/windows/window[@name='windowBackpack']/panel[@name='content']/grid[@name='inventory']/@rows">6</set>
+	<set xpath="/windows/window[@name='windowBackpack']/panel[@name='content']/grid[@name='inventory']/@cols">12</set>
+	
+
+<!-- Preppers Mod --> 
+</modpreppers>
