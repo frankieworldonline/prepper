@@ -1,0 +1,46 @@
+<modpreppers>
+	<!-- M84 Mod by Frankieworldonline --> 
+
+	<append xpath="/items">
+
+
+<item name="M84StunGrenade">
+	<property name="Tags" value="weapon,perkExplosiveWeapons"/>
+	<property name="CustomIcon" value="M84StunGrenade"/>
+	<property name="DisplayType" value="ammoGrenade"/>
+	<property name="Class" value="ItemClassTimeBomb"/>
+	<property name="HoldType" value="40"/>
+	<property name="Meshfile" value="#@modfolder:Resources/M-84prefab.unity3d?M-84prefab"/>
+	<Property name="TintColor" value="87,87,87"/>
+	<property name="DropScale" value="3"/>
+	<property name="Material" value="MDynamite"/>
+	<property name="ThrowableDecoy" value="true"/>
+	<property name="Weight" value="0"/>
+	<property name="Explosion.ParticleIndex" value="6"/>
+	<property name="Explosion.RadiusBlocks" value="5"/>
+
+	<property name="Stacknumber" value="40"/>
+	<property name="FuseTime" value="20000"/>
+	<property name="ExplodeOnHit" value="true"/>
+	<property class="Action0">
+		<property name="Class" value="ThrowAway"/>
+		<property name="Delay" value="1.2"/> 
+		<property name="Explosion.ParticleIndex" value="6"/>
+		<property name="Throw_strength_default" value="14"/>
+		<property name="Throw_strength_max" value="25"/>
+		<property name="Max_strain_time" value="1.5"/>
+		<property name="Sound_start" value="weapon_empty"/>
+	</property>
+	<property name="EconomicValue" value="91"/>
+	<property name="Group" value="Ammo/Weapons"/>
+	<property name="CraftingSkillGroup" value="craftSkillScience"/>
+	<effect_group tiered="false">
+		<triggered_effect name="onProjectileImpact" action="AddBuff" target="positionAOE" range="5" buff="buffM84StunGrenade"/>
+		<display_value name="ExRadius" value="5" />
+	</effect_group>
+</item>
+
+
+	</append>
+	<!-- M84 Mod by Frankieworldonline --> 
+</modpreppers>
